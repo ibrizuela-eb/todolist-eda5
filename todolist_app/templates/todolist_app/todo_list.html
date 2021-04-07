@@ -1,0 +1,21 @@
+{% extends "todolist_app/base.html" %}
+
+{% block content %}
+    <h1><u>Things to do</u></h1>
+    <ul>
+    {% for todo in object_list %}
+        {% if todo.done == True %}
+            <li><strike>{{ todo.id }} - {{ todo.description }} ({{ todo.user_assigned }}) </strike>
+        {% else %}
+            <li>{{ todo.id }} - {{ todo.description }} ({{ todo.user_assigned }})
+        {% endif %}
+            <a href="{% url 'edit_todo' todo.id %}">Edit</a>
+            <a href="{% url 'update_todo_assigned' todo.id %}">Reasing</a>
+            <a href="{% url 'delete_todo' todo.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+    </ul>   
+
+{% endblock %}
