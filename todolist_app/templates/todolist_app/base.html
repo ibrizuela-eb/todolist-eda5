@@ -4,22 +4,18 @@
     <header class="page-header">
     </header>
     <main class="container">
-        <div class="row">
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'todo_list' %}">Home</a>   
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_todo' %}">Create</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-success" href="{% url 'login' %}"> Login </a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-danger" href="{% url 'logout' %}"> Logout </a>
-                </li>
-            </ul>
+        <div class="alert alert-info" role="alert">
+        <div class="row mx-md-n5">
+            <div class="col px-md-5">
+                <a class="nav-link" href="{% url 'todo_list' %}" style="float: left">Home</a>
+                <a class="nav-link" href="{% url 'create_todo' %}" style="float: left">Create</a>
+            </div>
+            <div class="col px-md-5">
+                <a class="btn btn-danger" href="{% url 'logout' %}" style="float: right"> Logout </a>
+                <a class="btn btn-success" href="{% url 'login' %}" style="float: right"> Login </a>
+            </div>
         </div>
+    </div>
         <div>
             <div class="col">
                 {% block content %} 
