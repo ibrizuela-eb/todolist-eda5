@@ -1,4 +1,4 @@
-{% extends "todolist_app/base.html" %}
+{% extends "base.html" %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 
@@ -6,9 +6,8 @@
 <h1>Task to do</h1>
 <form method="post">{% csrf_token %}
     {% bootstrap_form form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">
-            Ok
-        </button>
-    {% endbuttons %}</form>
+    <button type="submit" class="btn btn-primary">OK</button>
+    {% block bottom %}
+    {% endblock %}
+</form>
 {% endblock %}

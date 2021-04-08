@@ -4,12 +4,13 @@ from todolist_app.models import Todo, Priority
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class TodoListView(ListView):
     model = Todo
 
-class TodoCreateView(CreateView):
+class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     fields = [
         'description',
@@ -28,7 +29,7 @@ class PriorityCreateView(CreateView):
     fields = '__all__'
     success_url = reverse_lazy('todo_list')
 
-class TodoUpdateView(UpdateView):
+class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     fields = [
         'description',
@@ -37,7 +38,7 @@ class TodoUpdateView(UpdateView):
     ]
     success_url = reverse_lazy('todo_list')
 
-class TodoAssignedUpdateView(UpdateView):
+class TodoAssignedUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     fields = ['user_assigned']
     success_url = reverse_lazy('todo_list')
